@@ -11,12 +11,27 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-core</artifactId>
-            <version>22.0.5</version>
+            <version>22.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi</artifactId>
-            <version>22.0.5</version>
+            <version>22.0.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Use a suitable version -->
+                <configuration>
+                    <source>11</source> <!-- Set source compatibility -->
+                    <target>11</target> <!-- Set target compatibility -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
