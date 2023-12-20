@@ -34,11 +34,7 @@ public class ConfigurableUsernameForm implements Authenticator {
         // Return true if the user is configured for this authenticator, otherwise return false.
         return true; // or false, depending on your logic
     }
-
-    @Override
-	public void close() {
-	}
-
+    
     @Override
 	public boolean requiresUser() {
 		return true;
