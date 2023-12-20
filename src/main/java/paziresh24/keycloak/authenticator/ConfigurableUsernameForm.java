@@ -27,4 +27,20 @@ public class ConfigurableUsernameForm implements Authenticator {
     public void setRequiredActions(KeycloakSession session, RealmModel realm, UserModel user) {
         // Implementation here. If you don't need to set any required actions, you can leave this empty.
     }
+
+    @Override
+    public boolean configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {
+        // Example implementation. Adjust according to your needs.
+        // Return true if the user is configured for this authenticator, otherwise return false.
+        return true; // or false, depending on your logic
+    }
+
+    @Override
+	public void close() {
+	}
+
+    @Override
+	public boolean requiresUser() {
+		return true;
+	}
 }
