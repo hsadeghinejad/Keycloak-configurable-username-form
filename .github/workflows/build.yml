@@ -18,7 +18,7 @@ jobs:
         run: mvn clean --batch-mode --update-snapshots package
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: configurable_username_form
           path: target/*.jar
