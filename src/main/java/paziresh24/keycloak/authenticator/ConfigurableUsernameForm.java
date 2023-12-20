@@ -23,5 +23,8 @@ public class ConfigurableUsernameForm implements Authenticator {
         // Cleanup, if needed
     }
 
-    // Implement other methods from Authenticator interface
+    @Override
+    public void setRequiredActions(KeycloakSession session, RealmModel realm, UserModel user) {
+        // Implementation here. If you don't need to set any required actions, you can leave this empty.
+    }
 }
