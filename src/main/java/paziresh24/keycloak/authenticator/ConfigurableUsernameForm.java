@@ -19,6 +19,12 @@ public class ConfigurableUsernameForm implements Authenticator {
     }
 
     @Override
+    public void action(AuthenticationFlowContext context) {
+        // Your implementation here.
+        // If you have no specific action to perform, you can leave it empty.
+    }
+
+    @Override
     public void close() {
         // Cleanup, if needed
     }
@@ -34,7 +40,7 @@ public class ConfigurableUsernameForm implements Authenticator {
         // Return true if the user is configured for this authenticator, otherwise return false.
         return true; // or false, depending on your logic
     }
-    
+
     @Override
 	public boolean requiresUser() {
 		return true;
