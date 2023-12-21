@@ -15,8 +15,43 @@ public class ConfigurableUsernameForm implements Authenticator {
 
     @Override
     public void authenticate(AuthenticationFlowContext context) {
-        // Your authentication logic
-    }
+        MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();
+    
+        // Check if the username is provided
+        if (formData.containsKey("username")) {
+            String username = formData.getFirst("username");
+            KeycloakSession session = context.getSession();
+            RealmModel realm = context.getRealm();
+    
+            // Check if user already exists
+            UserModel existingUser = session.users().getUserByUsername(username, realm);
+            if (existingUser != null) {
+                // User already exists, proceed to next step
+                context.setUser(existingUser);
+                context.success();
+            } else {
+                // User doesn't exist, create a new one
+                UserModel newUser = session.users().addUser(realm, username);
+                newUser.setEnabled(true);
+                // You can set additional attributes here if needed
+    
+                // Display a message to the user
+                Response challengeResponse = context.form()
+                        .setInfo("User registered successfully with username: " + username)
+                        .createForm("info-page.ftl");
+                context.challenge(challengeResponse);
+
+                context.setUser(newUser);
+                context.success();
+            }
+        } else {
+            // Username not provided in the request, handle this case
+            Response challengeResponse = context.form()
+                    .setError("Username is required")
+                    .createForm("error-page.ftl");
+            context.failureChallenge(AuthenticationFlowError.INVALID_USER, challengeResponse);
+        }
+    }    
 
     @Override
     public void action(AuthenticationFlowContext context) {
