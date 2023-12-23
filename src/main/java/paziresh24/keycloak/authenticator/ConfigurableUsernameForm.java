@@ -10,6 +10,9 @@ import org.keycloak.provider.ProviderConfigProperty;
 
 import java.util.Collections;
 import java.util.List;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import org.keycloak.authentication.AuthenticationFlowError;
 
 public class ConfigurableUsernameForm implements Authenticator {
 
