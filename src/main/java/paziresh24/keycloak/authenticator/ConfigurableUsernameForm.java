@@ -27,7 +27,7 @@ public class ConfigurableUsernameForm implements Authenticator {
             RealmModel realm = context.getRealm();
     
             // Check if user already exists
-            UserModel existingUser = session.users().getUserByUsername(username, realm);
+            UserModel existingUser = session.users().getUserByUsername(realm, username);
             if (existingUser != null) {
                 // User already exists, proceed to next step
                 context.setUser(existingUser);
