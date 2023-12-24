@@ -5,6 +5,7 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.authentication.Authenticator;
 import org.keycloak.authentication.AuthenticatorFactory;
 import org.keycloak.authentication.AuthenticatorSpi;
+import org.keycloak.models.KeycloakSessionFactory;
 
 // Other necessary imports...
 
@@ -39,5 +40,8 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
     public void close() {
     }
 
-    // Implement methods for configuration, if necessary...
+    @Override
+    public boolean isUserSetupAllowed() {
+        return true; // or false, based on your logic
+    }
 }
