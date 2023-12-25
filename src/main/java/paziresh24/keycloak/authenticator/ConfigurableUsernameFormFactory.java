@@ -44,4 +44,14 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
     public boolean isUserSetupAllowed() {
         return true; // or false, based on your logic
     }
+
+    @Override
+    public Requirement[] getRequirementChoices() {
+    return new Requirement[] {
+        Requirement.REQUIRED,
+        Requirement.OPTIONAL,
+        Requirement.CONDITIONAL,
+        // Include other applicable requirements
+    };
+}
 }
