@@ -6,6 +6,7 @@ import org.keycloak.authentication.Authenticator;
 import org.keycloak.authentication.AuthenticatorFactory;
 import org.keycloak.authentication.AuthenticatorSpi;
 import org.keycloak.models.KeycloakSessionFactory;
+import org.keycloak.authentication.AuthenticatorFactory.Requirement;
 
 // Other necessary imports...
 
@@ -47,11 +48,16 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
 
     @Override
     public Requirement[] getRequirementChoices() {
-    return new Requirement[] {
-        Requirement.REQUIRED,
-        Requirement.OPTIONAL,
-        Requirement.CONDITIONAL,
-        // Include other applicable requirements
-    };
-}
+        return new Requirement[] {
+            Requirement.REQUIRED,
+            Requirement.OPTIONAL,
+            Requirement.CONDITIONAL,
+            // Include other applicable requirements
+        };
+    }
+
+    @Override
+    public boolean isConfigurable() {
+        return true; // Return true if it is configurable, false otherwise
+    }    
 }
