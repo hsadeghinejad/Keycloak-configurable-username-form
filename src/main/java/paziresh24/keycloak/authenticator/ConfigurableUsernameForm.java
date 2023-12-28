@@ -1,4 +1,4 @@
-package paziresh24.keycloak.autheticator;
+package paziresh24.keycloak.authenticator;
 
 import org.keycloak.authentication.Authenticator;
 import org.keycloak.authentication.AuthenticationFlowContext;
