@@ -1,12 +1,17 @@
 package paziresh24.keycloak.authenticator;
 
+import org.keycloak.models.AuthenticationExecutionModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
 import org.keycloak.authentication.Authenticator;
 import org.keycloak.authentication.AuthenticatorFactory;
 import org.keycloak.authentication.AuthenticatorSpi;
 import org.keycloak.models.KeycloakSessionFactory;
-import org.keycloak.authentication.AuthenticatorFactory.Requirement;
+import org.keycloak.provider.ProviderConfigProperty;
+
+import java.util.List;
+
+import static org.keycloak.models.AuthenticationExecutionModel.Requirement;
 
 // Other necessary imports...
 
@@ -20,6 +25,11 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
     @Override
     public String getDisplayType() {
         return "Configurable Username Form";
+    }
+
+    @Override
+    public String getReferenceCategory() {
+        return null;
     }
 
     // Implement other methods from AuthenticatorFactory...
@@ -50,7 +60,7 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
     public Requirement[] getRequirementChoices() {
         return new Requirement[] {
             Requirement.REQUIRED,
-            Requirement.OPTIONAL,
+//            Requirement.OPTIONAL,
             Requirement.CONDITIONAL,
             // Include other applicable requirements
         };
@@ -59,5 +69,15 @@ public class ConfigurableUsernameFormFactory implements AuthenticatorFactory {
     @Override
     public boolean isConfigurable() {
         return true; // Return true if it is configurable, false otherwise
-    }    
+    }
+
+    @Override
+    public String getHelpText() {
+        return null;
+    }
+
+    @Override
+    public List<ProviderConfigProperty> getConfigProperties() {
+        return null;
+    }
 }
